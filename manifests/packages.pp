@@ -7,7 +7,7 @@ class logstash::packages {
                 $require = [ Yumrepo['logstash'], Package[$elasticsearch::packages::packs] ]
           }
           'Debian': {
-                $require = [ Apt::Source['logstash'], Package"$elasticsearch::packages::packs] ]
+                $require = [ Apt::Source['logstash'], Package[$elasticsearch::packages::packs] ]
           }
   }
   package {
