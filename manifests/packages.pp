@@ -4,10 +4,10 @@ class logstash::packages {
   
   case $::osfamily {
           'RedHat': {
-                $require = [ Yumrepo['logstash'], Package["$elasticsearch::packages::packs"] ]
+                $require = [ Yumrepo['logstash'], Package[$elasticsearch::packages::packs] ]
           }
           'Debian': {
-                $require = [ Apt::Source['logstash'], Package["$elasticsearch::packages::packs"] ]
+                $require = [ Apt::Source['logstash'], Package"$elasticsearch::packages::packs] ]
           }
   }
   package {
