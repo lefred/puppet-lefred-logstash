@@ -14,7 +14,7 @@ class logstash::client::config {
         ensure  => present,
         require => File['/etc/logstash-forwarder'],
         source  => "puppet:///modules/logstash/forwarder.key";
-    "/etc/logstash-forwarder/conf/"]:
+    "/etc/logstash-forwarder/conf/":
         require => File['/etc/logstash-forwarder'],
         ensure  => "directory"";
   }
