@@ -1,10 +1,9 @@
 class logstash::client::config {
   
  file {
-    "/etc/logstash-forwarder":
+    "/etc/logstash-forwarder/":
         ensure  => directory;
-    "/etc/logstash-forwarder/conf":
-        ensure  => directory,
+    "/etc/logstash-forwarder/conf/":
         require => File['/etc/logstash-forwarder'],
         ensure  => "directory";
     "/etc/logstash-forwarder/forwarder.crt":
