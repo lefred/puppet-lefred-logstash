@@ -1,0 +1,13 @@
+{
+  "network": {
+    "servers": [
+      "<%= @logstash_server %>:5043"
+    ],
+
+    "ssl ca": "/etc/logstash-forwarder/forwarder.crt",
+    "ssl certificate": "/etc/logstash-forwarder/forwarder.crt",
+    "ssl key": "/etc/logstash-forwarder/forwarder.key",
+
+    "timeout": 15
+  }
+}
