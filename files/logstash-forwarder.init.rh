@@ -13,7 +13,7 @@ DESC="log shipper"
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
-DAEMON=/opt/logstash-forwarder/bin/logstash-forwarder
+DAEMON=/usr/bin/logstash-forwarder
 DAEMON_ARGS="-config /etc/logstash-forwarder -spool-size 100 -log-to-syslog"
 
 start() {
