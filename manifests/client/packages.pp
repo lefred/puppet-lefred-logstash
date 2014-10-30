@@ -6,7 +6,10 @@ class logstash::client::packages {
         source => "puppet:///modules/logstash/logstash-forwarder";
     "/etc/init.d/logstash-forwarder":
         ensure => present,
-        source => "puppet:///modules/logstash/logstash-forwarder.init";
+        source => $operatingsystem ? {
+	    /(?i:Ubuntu|Debian|Mint)/ => "puppet:///modules/logstash/logstash-forwarder.init",
+	    default		      => "puppet:///modules/logstash/logstash-forwarder.init.rh"
+        }
   }
   
   service {

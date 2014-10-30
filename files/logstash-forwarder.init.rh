@@ -1,0 +1,55 @@
+#! /bin/sh
+#
+# chkconfig: 345 99 99
+# description: logstash-forwarder
+# processname: logstash-forwarder
+# config: /etc/logstash-forwarder
+
+# Source function library.
+. /etc/init.d/functions
+
+NAME=logstash-forwarder
+DESC="log shipper"
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+PIDFILE=/var/run/$NAME.pid
+SCRIPTNAME=/etc/init.d/$NAME
+DAEMON=/opt/logstash-forwarder/bin/logstash-forwarder
+DAEMON_ARGS="-config /etc/logstash-forwarder -spool-size 100 -log-to-syslog"
+
+start() {
+        echo -n "Starting $NAME: "
+        daemon --pidfile $PIDFILE "nohup $DAEMON $DAEMON_ARGS >/dev/null 2>&1 &"
+        touch /var/lock/subsys/$NAME
+        echo $(pidofproc $NAME) > $PIDFILE
+        echo
+        return 0
+}
+
+stop() {
+        echo -n "Shutting down $NAME: "
+        killproc -p $PIDFILE
+        rm -f /var/lock/subsys/$NAME
+        echo
+        return 0
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status -p $PIDFILE $NAME
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $NAME {start|stop|status|restart}"
+        exit 1
+        ;;
+esac
+exit $?
