@@ -11,7 +11,7 @@ class logstash::client::config {
     "/etc/logstash-forwarder/conf/config.json":
 	require => File['/etc/logstash-forwarder/conf/'],
 	ensure  => present,
-	content => template("conf/config.json.erb");
+	content => template("config.json.erb");
     "/etc/logstash-forwarder/forwarder.crt":
         ensure  => present,
         require => File['/etc/logstash-forwarder'],
