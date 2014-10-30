@@ -15,7 +15,7 @@ class logstash::client::packages {
   service {
     "logstash-forwarder":
         ensure => running,
-	require => [ File['/usr/bin/logstash-forwarder'], File['/etc/init.d/logstash-forwarder'], File['/etc/logstash-forwarder/conf/config.json'] ],
+	require => [ File['/usr/bin/logstash-forwarder'], File['/etc/logstash-forwarder/conf/config.json'] ],
   }
   
 }
