@@ -11,7 +11,7 @@ class logstash::config {
     "/etc/logstash/conf.d/":
         ensure  => directory,
 	recurse => true,
-        source  => "puppet:///modules/logstash/cond.d";
+        source  => "puppet:///modules/logstash/conf.d/";
   }
   
 }  
