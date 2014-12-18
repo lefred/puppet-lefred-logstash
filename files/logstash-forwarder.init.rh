@@ -14,7 +14,7 @@ PATH=/sbin:/usr/sbin:/bin:/usr/bin
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
 DAEMON=/usr/bin/logstash-forwarder
-DAEMON_ARGS="-config /etc/logstash-forwarder -spool-size 100 -log-to-syslog"
+DAEMON_ARGS="-config /etc/logstash-forwarder/conf -spool-size 100 -log-to-syslog"
 
 start() {
         echo -n "Starting $NAME: "
