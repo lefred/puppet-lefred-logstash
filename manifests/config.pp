@@ -8,6 +8,10 @@ class logstash::config {
     "/etc/logstash/forwarder.key":
         ensure  => present,
         source  => "puppet:///modules/logstash/forwarder.key";
+    "/etc/logstash/conf.d/":
+        ensure  => directory,
+	recurse => true,
+        source  => "puppet:///modules/logstash/cond.d";
   }
   
 }  
