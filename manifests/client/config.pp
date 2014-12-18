@@ -1,6 +1,6 @@
 class logstash::client::config {
  
- $logstash_server = $logstash::client::server
+ $logstash_server = $logstash::client::logstash_server
  
  file {
     "/etc/logstash-forwarder/":
